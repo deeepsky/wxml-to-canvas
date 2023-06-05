@@ -19,7 +19,7 @@ class Draw {
     if (fill) ctx.fill()
   }
 
-  drawView(box, style) {
+  drawView(box, style, rawStyle) {
     const ctx = this.ctx
     const {
       left: x, top: y, width: w, height: h
@@ -32,6 +32,11 @@ class Draw {
       backgroundColor = 'transparent',
     } = style
     ctx.save()
+    // boxShadow
+    if (rawStyle.shadowOffsetX) ctx.shadowOffsetX = rawStyle.shadowOffsetX
+    if (rawStyle.shadowOffsetY) ctx.shadowOffsetY = rawStyle.shadowOffsetY
+    if (rawStyle.shadowColor) ctx.shadowColor = rawStyle.shadowColor
+    if (rawStyle.shadowBlur) ctx.shadowBlur = rawStyle.shadowBlur
     // 外环
     if (borderWidth > 0) {
       ctx.fillStyle = borderColor || color
