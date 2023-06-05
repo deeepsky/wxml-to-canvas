@@ -208,10 +208,10 @@ class Draw {
   }
 
   async drawNode(element) {
-    const {layoutBox, computedStyle, name} = element
+    const {layoutBox, computedStyle, name, style} = element
     const {src, text} = element.attributes
     if (name === 'view') {
-      this.drawView(layoutBox, computedStyle)
+      this.drawView(layoutBox, computedStyle, style)
     } else if (name === 'image') {
       await this.drawImage(src, layoutBox, computedStyle)
     } else if (name === 'text') {
